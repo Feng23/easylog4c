@@ -8,8 +8,8 @@ void elog_get_time(char *s) {
     time_t t;
     struct tm *tm;
     t = time(NULL);
-    tm = gmtime(&t);
-    strftime(s, MAX_LEN, "[%Y-%m-%d %H-%M-%S %z]", tm);
+    tm = localtime(&t);
+    strftime(s, MAX_LEN, "[%Y-%m-%d %H:%M:%S %z]", tm);
 }
 
 void elog_write_log(ELogLevelType level, FILE *out, const char *file, const char *func, int line, const char *fmt, ...) {
